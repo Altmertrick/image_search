@@ -1,19 +1,26 @@
-import React from 'react';
+import './App.css';
+import React, { useState } from 'react';
+
+import Header from './components/Header/Header';
+import ImageList from './components/ImageList/ImageList';
+
+import { ImageT } from './types/types';
 import { getImages } from './api/api';
 
-import './App.css';
+const App: React.FC = () => {
+  const [images, setImages] = useState<Array<ImageT>>([]);
 
-function App() {
-  //const images = getImages('trees');
-  //console.log(images)
+  const onSearch = async (term: string) => {
+    const images = await getImages(term);
+    setImages([...images]);
+  };
+
   return (
     <div className="App">
-      <header>
-        <div>Search bar</div>
-      </header>
-      <div>image LIst:</div>
+      <Header submitSearch={onSearch} />
+      <ImageList images={images} />
     </div>
   );
-}
+};
 
 export default App;
