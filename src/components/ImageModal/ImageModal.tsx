@@ -14,11 +14,9 @@ const ImageModal: React.FC<PropsT> = (props) => {
       <span onClick={props.toggleModal} className={s.close}>
         &times;
       </span>
-      <img
-        src={props.image.urls.regular}
-        className={s.modal_content}
-        id="img01"
-      ></img>
+      <div className={s.modal_content}>
+        <img src={props.image.urls.regular} id="img01"></img>
+      </div>
 
       <div id="caption">{props.image.description}</div>
     </div>
