@@ -8,7 +8,7 @@ type PropsT = {
 
 const ImageList: React.FC<PropsT> = (props) => {
   const imagesEls = props.images.map((img) => (
-    <ImageCard url={img.urls.thumb} />
+    <ImageCard img={img} key={img.id} />
   ));
 
   return (
