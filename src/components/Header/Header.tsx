@@ -1,29 +1,21 @@
+import s from './Header.module.css';
 import { useState } from 'react';
+import SearchBar from '../SearchBar/SearchBar';
 
 type PropsT = {
   submitSearch: (term: string) => Promise<void>;
 };
 
 const Header: React.FC<PropsT> = (props) => {
-  const [term, setTerm] = useState<string>('');
-
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-    setTerm(e.target.value);
-  };
-
-  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onImagesSearch = (term: string) => {
     props.submitSearch(term);
     console.log(term);
-    setTerm(' ');
   };
 
   return (
-    <div>
-      <form onSubmit={onFormSubmit}>
-        <input onChange={onInputChange} value={term} />
-      </form>
+    <div className={s.header}>
+      <h1 className={s.heading}>Search For Images</h1>
+      <SearchBar onFormSubmit={onImagesSearch} />
     </div>
   );
 };
