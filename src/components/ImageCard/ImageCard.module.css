@@ -1,0 +1,18 @@
+.image_card_wrapper {
+  margin: 10px;
+}
+
+.image_wrapper {
+  width: 200px;
+  height: 200px;
+
+  border-radius: 10px;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
+}

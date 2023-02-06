@@ -1,19 +1,9 @@
+import s from './ImageList.module.css';
 import { ImageT } from '../../types/types';
+import ImageCard from '../ImageCard/ImageCard';
 
 type PropsT = {
   images: Array<ImageT>;
-};
-
-type PropsTImg = {
-  url: string;
-};
-
-const ImageCard: React.FC<PropsTImg> = (props) => {
-  return (
-    <div>
-      <img style={{ withd: '40px' } as any} src={props.url} />
-    </div>
-  );
 };
 
 const ImageList: React.FC<PropsT> = (props) => {
@@ -21,7 +11,11 @@ const ImageList: React.FC<PropsT> = (props) => {
     <ImageCard url={img.urls.thumb} />
   ));
 
-  return <div>{props.images.length ? imagesEls : 'No images'}</div>;
+  return (
+    <div className={s.image_list_wrapper}>
+      {props.images.length ? imagesEls : 'No images'}
+    </div>
+  );
 };
 
 export default ImageList;
